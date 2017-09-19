@@ -5,6 +5,35 @@ require('pg')
 require('spec_helper')
 
 describe(Patient) do
+
+  describe("#id") do
+    it("tells you the id") do
+      patient = Patient.new({:id => nil, :name => "Margaret Berry", :birthdate => "1985-07-17 20:00:00", :doctor_id => 1})
+      expect(patient.id()).to(eq(nil))
+    end
+  end
+
+  describe("#name") do
+    it("tells you the name") do
+      patient = Patient.new({:id => nil, :name => "Margaret Berry", :birthdate => "1985-07-17 20:00:00", :doctor_id => 1})
+      expect(patient.name()).to(eq("Margaret Berry"))
+    end
+  end
+
+  describe("#birthdate") do
+    it("tells you the birthdate") do
+      patient = Patient.new({:id => nil, :name => "Margaret Berry", :birthdate => "1985-07-17 20:00:00", :doctor_id => 1})
+      expect(patient.birthdate()).to(eq("1985-07-17 20:00:00"))
+    end
+  end
+
+  describe("#doctor_id") do
+    it("tells you the doctor_id") do
+      patient = Patient.new({:id => nil, :name => "Margaret Berry", :birthdate => "1985-07-17 20:00:00", :doctor_id => 1})
+      expect(patient.doctor_id()).to(eq(1))
+    end
+  end
+
   describe(".all") do
     it("starts off with no patients") do
       expect(Patient.all()).to(eq([]))
