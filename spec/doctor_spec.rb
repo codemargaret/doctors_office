@@ -5,6 +5,27 @@ require('pg')
 require('spec_helper')
 
 describe(Doctor) do
+  describe("#id") do
+    it("tells you the id") do
+      doctor = Doctor.new({:id => nil, :name => "Michael S. Booker", :specialty => "Internal Medicine"})
+      expect(doctor.id()).to(eq(nil))
+    end
+  end
+
+  describe("#name") do
+    it("tells you the name") do
+      doctor = Doctor.new({:id => nil, :name => "Michael S. Booker", :specialty => "Internal Medicine"})
+      expect(doctor.name()).to(eq("Michael S. Booker"))
+    end
+  end
+
+  describe("#specialty") do
+    it("tells you the specialty") do
+      doctor = Doctor.new({:id => nil, :name => "Michael S. Booker", :specialty => "Internal Medicine"})
+      expect(doctor.specialty()).to(eq("Internal Medicine"))
+    end
+  end
+
   describe(".all") do
     it("starts off with no doctors") do
       expect(Doctor.all()).to(eq([]))
