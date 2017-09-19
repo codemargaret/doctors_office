@@ -48,4 +48,11 @@ describe(Doctor) do
     end
   end
 
+  describe("#assign_patient") do
+    it("add a patient to a doctors patients list") do
+      new_patient = Patient.new()
+
+    end
+  end
+
 end #Doctor class tests

@@ -1,4 +1,5 @@
 require('patient')
+require('doctor')
 require('pry')
 require('rspec')
 require('pg')
@@ -53,6 +54,15 @@ describe(Patient) do
       new_patient = Patient.new({:id => nil, :name => "Margaret Berry", :birthdate => "1985-07-17 20:00:00", :doctor_id => 1})
       new_patient.save
       expect(Patient.all()).to(eq([new_patient]))
+    end
+  end
+
+  describe("#doctor") do
+    it("shows the patient's assigned doctor") do
+      new_doctor = Doctor.new({:id => 1, :name => "Michael S. Booker", :specialty => "Internal Medicine"})
+      # new_doctor2 = Doctor.new({:id => 2, :name => "Yasmine Capybara", :specialty => "Pediatrician"})
+      new_patient = Patient.new({:id => nil, :name => "Margaret Berry", :birthdate => "1985-07-17 20:00:00", :doctor_id => 1})
+      expect(new_patient.doctor).to(eq(new_doctor.id))
     end
   end
 

@@ -27,4 +27,16 @@ class Doctor
     saved_doctor = DB.exec("INSERT INTO doctors (name, specialty) VALUES ('#{@name}', '#{@specialty}') RETURNING id;")
     @id = saved_doctor.first().fetch("id").to_i()
   end
+
+  # def patients(id)
+  #   my_patients = []
+  #   all_patients = Patient.all()
+  #   all_patients.each() do |patient|
+  #     if patient.id = id
+  #       my_patients.push(patient)
+  #     end
+  #   end
+  #   my_patients
+  # end
+
 end #Doctor class

@@ -29,4 +29,17 @@ class Patient
     saved_patient = DB.exec("INSERT INTO patients (name, birthdate, doctor_id) VALUES ('#{@name}', '#{@birthdate}', '#{@doctor_id}') RETURNING id;")
     @id = saved_patient.first().fetch("id").to_i()
   end
+
+  def doctor(patient_id)
+    my_doctor = ""
+    poss_docs = Doctor.all()
+    poss_docs.each |doctor| do
+      if patient_id.even?
+        my_doctor = doctor_id.first()
+      else
+        my_doctor = doctor_id.second()
+    end
+    my_doctor
+  end
+
 end #Patient class
