@@ -19,7 +19,12 @@ class Doctor
     doctors_array
   end
 
-  def save
+  def ==(another_doctor)
+    self.name().==(another_doctor.name()).&(self.id().==(another_doctor.id())).&(self.specialty().==(another_doctor.specialty()))
+  end
 
+  def save
+    saved_doctor = DB.exec("INSERT INTO doctors (name, specialty) VALUES ('#{@name}', '#{@specialty}') RETURNING id;")
+    @id = saved_doctor.first().fetch("id").to_i()
   end
 end #Doctor class
